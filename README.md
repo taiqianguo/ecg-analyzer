@@ -17,4 +17,7 @@ Here the delay of digital filter must be well considered .
 Finally , the asyncronous recieve and pipline of data been processed in PS part (arm core) must be considered. 
 By using FIFO data sturcture and multi thread, we reduced the waiting during transfer before processing heart rate counting and ecg distortion analysis.
 
-  
+![image](https://github.com/taiqianguo/ecg-analyzer/assets/58079218/fad51e88-98e7-48bc-8ea6-06905d269466)
+![image](https://github.com/taiqianguo/ecg-analyzer/assets/58079218/fb45d1e0-aa4d-4125-98d8-66aeae5b1673)
+
+
