@@ -1,4 +1,6 @@
 This project is based on the PYNQ system, aiming to study I2C protocol implementation and DSP, as well as interfaces between the PL and PS systems. 
+The flow chart as follows:
+<img src="https://github.com/taiqianguo/ecg-analyzer/assets/58079218/2ad5b471-5799-4b62-b675-cfbf6f5c27da" width="1500">
 
 The project includes a pulse sensor that senses electrocardiography as an analog value output and is collected by the ADC module ADS1115. The ADS1115 module uses the I2C protocol connected to PL GPIO. The design of the analog detection filter filters out 50Hz electric power noise, and the noise from baseline wander is tackled by an average digital filter. The reason for this is that baseline wandering has a very low frequency, around 1Hz (mostly from breathing), and is hard to be filtered by analog filters.
 
