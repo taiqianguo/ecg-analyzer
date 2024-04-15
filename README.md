@@ -10,7 +10,10 @@ The connection between PL and PS uses the AXI GPIO port. The IP using AXI to sim
 
 Finally, the asynchronous receive and pipeline of data being processed in the PS part (ARM core) must be considered. By using a FIFO data structure and multithreading, we reduced the waiting during transfer before processing heart rate counting and ECG distortion analysis
 
-![image](https://github.com/taiqianguo/ecg-analyzer/assets/58079218/fad51e88-98e7-48bc-8ea6-06905d269466)
-![image](https://github.com/taiqianguo/ecg-analyzer/assets/58079218/fb45d1e0-aa4d-4125-98d8-66aeae5b1673)
+![image1](https://github.com/taiqianguo/ecg-analyzer/assets/58079218/fad51e88-98e7-48bc-8ea6-06905d269466)
+img[alt=image1] { width: 200px; }
+![image2](https://github.com/taiqianguo/ecg-analyzer/assets/58079218/fb45d1e0-aa4d-4125-98d8-66aeae5b1673)
+img[alt=image2] { width: 200px; }
+
 
 
