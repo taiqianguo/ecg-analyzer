@@ -1,21 +1,14 @@
-This project is based on pynq system, aiming at study IIC ptotocol implementation and DSP as well as interfaces between PL and PS system .
-This project include a pluse sensor which sensing electrocardiography as analog value output and collected by ADC module ADS1115, ADS1115 mudule use IIC protocol connected to PL GPIO.
-The design of analog defection filter out 50HZ eletric power noise , and the noise from baseline wander is tackled by an average digital filter 
-for the reason that the baseline wandering has very low freqency ranging around 1HZ ( mostly from breathing), and is hard to be filtered by analog filter.
+This project is based on the PYNQ system, aiming to study I2C protocol implementation and DSP, as well as interfaces between the PL and PS systems. 
 
-During the design of IIC protocol for ADS115, I gain a good experience from hardware level how communication initialized, how and when the transfer and ACK happened.
-after this IIC implementation, i recalled from textbook, how the throughput and delay are estimated , 
-then get a better understanding the essences of IIC is a ' low speed peripheral deveice'.
-This part i studied and referred from  https://learn.lushaylabs.com/i2c-adc-micro-procedures
-An elegant design based on finite state machines, what i learned from this design 
-is that the protocol can be divided into independent FSMs , with appropraite partition, the design complexity can be significantly reduced.
+The project includes a pulse sensor that senses electrocardiography as an analog value output and is collected by the ADC module ADS1115. The ADS1115 module uses the I2C protocol connected to PL GPIO. The design of the analog detection filter filters out 50Hz electric power noise, and the noise from baseline wander is tackled by an average digital filter. The reason for this is that baseline wandering has a very low frequency, around 1Hz (mostly from breathing), and is hard to be filtered by analog filters.
 
-As for digital filter, theoritically, ECG signal requires dedicated complex filters in order to promise performance including interference repression and real time character.
-But here for study purposises, only a simple average filter to reduce breath interference, basically we subtract the value from that average filter.
-Here the delay of digital filter must be well considered .
+During the design of the I2C protocol for ADS1115, I gained valuable experience at the hardware level about how communication is initialized, and how and when the transfer and ACK occur. After this I2C implementation, I recalled from textbooks how throughput and delay are estimated, and then gained a better understanding that the essence of I2C is a 'low-speed peripheral device'. This part I studied and referred to from https://learn.lushaylabs.com/i2c-adc-micro-procedures. An elegant design based on finite state machines taught me that the protocol can be divided into independent FSMs. With appropriate partitioning, the design complexity can be significantly reduced.
 
-Finally , the asyncronous recieve and pipline of data been processed in PS part (arm core) must be considered. 
-By using FIFO data sturcture and multi thread, we reduced the waiting during transfer before processing heart rate counting and ecg distortion analysis.
+As for the digital filter, theoretically, the ECG signal requires dedicated complex filters to ensure performance including interference suppression and real-time characteristics. However, here for study purposes, only a simple average filter is used to reduce breath interference; basically, we subtract the value from that average filter. The delay of the digital filter must be well considered.
+
+The connection between PL and PS uses the AXI GPIO port. The IP using AXI to simulate GPIO between PS and PL transfers ecg data (16-bit in parallel) and the 'data_ready' signal from PL to PS.
+
+Finally, the asynchronous receive and pipeline of data being processed in the PS part (ARM core) must be considered. By using a FIFO data structure and multithreading, we reduced the waiting during transfer before processing heart rate counting and ECG distortion analysis
 
 ![image](https://github.com/taiqianguo/ecg-analyzer/assets/58079218/fad51e88-98e7-48bc-8ea6-06905d269466)
 ![image](https://github.com/taiqianguo/ecg-analyzer/assets/58079218/fb45d1e0-aa4d-4125-98d8-66aeae5b1673)
