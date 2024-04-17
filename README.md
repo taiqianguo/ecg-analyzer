@@ -1,4 +1,4 @@
-This project is based on the PYNQ system, aiming to study I2C protocol implementation and DSP, as well as interfaces between the PL and PS systems. 
+This project is based on the PYNQ system(the board is 小熊猫zynq 7010，博宸精芯）, aiming at study I2C protocol implementation and DSP, as well as interfaces between the PL and PS systems. 
 
 The flow chart as follows:
 
